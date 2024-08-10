@@ -1,52 +1,29 @@
-import { useState } from "react";
-
 
 const SendSMS = () => {
 
-  const [numbers, setNumbers] = useState('');
-    const [message, setMessage] = useState('');
-
-    const handleNumbersChange = (e) => {
-        setNumbers(e.target.value);
-    };
-
-    const handleMessageChange = (e) => {
-        setMessage(e.target.value);
-    };
+ 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const form = e.target
+        const message = form.message.value
+        const numbers = form.numbers.value
+        console.log(message,numbers);
 
-        const phoneNumbers = numbers.split(',').map(num => num.trim());
+        // const phoneNumbers = numbers.split(',').map(num => num.trim());
 
-        try {
-            await Promise.all(phoneNumbers.map(async (number) => {
-                // Replace with your backend API endpoint
-                const response = await fetch('/send-sms', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ number, message }),
-                });
+       
 
-                if (!response.ok) {
-                    throw new Error('Failed to send message');
-                }
-            }));
-
-            alert('Messages sent successfully!');
-        } catch (error) {
-            alert(`Error: ${error.message}`);
-        }
-    };
+    }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
-            
-            <button type="submit">Send Message</button>
+
+            <input name="numbers" type="text" placeholder="Number" className="input input-bordered w-full max-w-xs" />
+
+            <textarea name="message" className="textarea textarea-bordered" placeholder="Message"></textarea>
+            <button className="btn" type="submit">Send Message</button>
         </form>
         </div>
     );
