@@ -21,7 +21,7 @@ const SendSMS = () => {
     // .catch((error) => {
     //   console.error('There was an error sending the data:', error);
     // });
-
+                                        
     axios.post('http://localhost:5002/submit', formData)
             .then(response => {
                 console.log('Response from server:', response.data);
