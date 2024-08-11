@@ -9,7 +9,7 @@ const SendSMS = () => {
         const form = e.target
         const message = form.message.value;
         const numbers = form.numbers.value;
-        const formData = {message}
+        const formData = {numbers,message}
         console.log(formData);
 
         // const phoneNumbers = numbers.split(',').map(num => num.trim());
