@@ -12,15 +12,7 @@ const SendSMS = () => {
         const formData = {numbers,message}
         console.log(formData);
 
-        // const phoneNumbers = numbers.split(',').map(num => num.trim());
-        
-    // axios.post('http://localhost:5002/sendSms', message)
-    // .then((response) => {
-    //   console.log('Data sent successfully:', response.data);
-    // })
-    // .catch((error) => {
-    //   console.error('There was an error sending the data:', error);
-    // });
+  
                                         
     axios.post('http://localhost:5002/submit', formData)
             .then(response => {
